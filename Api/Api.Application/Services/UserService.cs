@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Api.Application.DTOs.User;
 using Api.Application.Interfaces;
 using Api.Domain.Entities;
+using Api.Domain.Enums;
 using Api.Domain.Interfaces;
 using AutoMapper;
 

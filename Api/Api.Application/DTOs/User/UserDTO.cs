@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Application.DTOs.User
 {
     public class UserDTO
@@ -5,6 +7,6 @@ namespace Api.Application.DTOs.User
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
+        public Role Role { get; set; }
     }
 }
