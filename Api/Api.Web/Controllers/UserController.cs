@@ -10,7 +10,7 @@ namespace Api.Web.Controllers
     [Route ("api/[controller]")]
     public class UserController : BaseController<UserController>
     {
-        readonly IUserService _userService;
+        private readonly IUserService _userService;
         public UserController(IUserService userService)
         {
             _userService = userService;

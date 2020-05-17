@@ -30,7 +30,7 @@ namespace Api.Application.Services
             var getUser = await _userRepository.Get(user);
 
             if (getUser == null)
-                new Exception("Usuário ou senha incorretos.");
+                throw new Exception("Usuário ou senha incorretos.");
 
             response.Token = await _tokenService.GenerateToken(getUser);
             response.User = _mapper.Map<UserDTO>(getUser);
