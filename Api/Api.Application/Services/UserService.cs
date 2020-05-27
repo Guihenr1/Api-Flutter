@@ -14,7 +14,6 @@ namespace Api.Application.Services
         readonly IUserRepository _userRepository;
         readonly ITokenService _tokenService;
         readonly IMapper _mapper;
-        private UserResponseDTO userAuthenticate { get; set; }
         public UserService(IUserRepository userRepository
             , ITokenService tokenService
             , IMapper mapper)
@@ -25,31 +24,18 @@ namespace Api.Application.Services
         }
         public async Task<UserResponseDTO> Authenticate(UserRequestDTO userRequest)
         {
-            userAuthenticate = new UserResponseDTO();
+            var userAuthenticate = new UserResponseDTO();
             var user = _mapper.Map<User>(userRequest);
 
             var getUser = await _userRepository.Get(user);
 
             if (getUser == null)
-                UserInvalid();
+                throw new Exception("Usuário ou senha incorretos.");
             
-            await InsertToken(getUser);
-            await InsertUser(getUser);
+            userAuthenticate.Token = await _tokenService.GenerateToken(user);
+            userAuthenticate.User = _mapper.Map<UserDTO>(user);
 
             return userAuthenticate;
-        }
-
-        void UserInvalid()
-        {
-            throw new Exception("Usuário ou senha incorretos.");
-        }
-    
-        async Task InsertToken(User user) {
-            userAuthenticate.Token = await _tokenService.GenerateToken(user);
-        }
-
-        async Task InsertUser(User user) {
-            userAuthenticate.User = _mapper.Map<UserDTO>(user);
         }
     }
 }
