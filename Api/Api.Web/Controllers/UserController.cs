@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Web.Controllers
 {
     [ApiController]
-    [Route ("api/[controller]")]
+    [Route("api/[controller]")]
     public class UserController : BaseController<UserController>
     {
         private readonly IUserService _userService;
@@ -22,15 +22,19 @@ namespace Api.Web.Controllers
         /// <param name="userRequest">Credenciais</param>
         /// <returns>Retorna dados do usuário e um token.</returns>
         [HttpPost]
-        public async Task<IActionResult> Authenticate ([FromBody] UserRequestDTO userRequest) {
-            UserResponseDTO responseDTO;
-            try {
-                responseDTO = await _userService.Authenticate(userRequest);
-            } catch (Exception ex) {
-                return CreateServerErrorResponse (ex, null);
+        public async Task<IActionResult> Authenticate([FromBody] UserRequestDTO userRequest)
+        {
+            UserResponseDTO userData;
+            try
+            {
+                userData = await _userService.Authenticate(userRequest);
+            }
+            catch (Exception ex)
+            {
+                return CreateServerErrorResponse(ex, null);
             }
 
-            return CreateResponse (responseDTO);
+            return CreateResponse(userData);
         }
     }
 }

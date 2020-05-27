@@ -5,6 +5,6 @@ namespace Api.Application.Interfaces
 {
     public interface IUserService
     {
-        Task<UserResponseDTO> Authenticate(UserRequestDTO userDTO);
+        Task<UserResponseDTO> Authenticate(UserRequestDTO userRequest);
     }
 }

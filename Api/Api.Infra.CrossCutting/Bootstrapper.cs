@@ -26,6 +26,7 @@ namespace Api.Infra.CrossCutting
         private static void RegisterServices (this IServiceCollection services) {
             services.AddScoped<ITokenService, TokenService> ();
             services.AddScoped<IUserService, UserService> ();
+            services.AddScoped<IProductService, ProductService> ();
 
             // Service Validators
             // services.AddScoped<ISegmentServiceValidator, SegmentServiceValidator> ();
@@ -33,6 +34,7 @@ namespace Api.Infra.CrossCutting
 
         private static void AddRepositories (this IServiceCollection services) {
             services.AddScoped<IUserRepository, UserRepository> ();
+            services.AddScoped<IProductRepository, ProductRepository> ();
         }
     }
 }
