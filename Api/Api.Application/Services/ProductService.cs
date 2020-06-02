@@ -24,5 +24,11 @@ namespace Api.Application.Services
             var products = await _productRepository.GetAll();
             return _mapper.ProjectTo<ProductDTO>(products.AsQueryable());
         }
+
+        public async Task<IEnumerable<ProductDTO>> GetAllByType(int productCategory)
+        {
+            var products = await _productRepository.GetByCategory(productCategory);
+            return _mapper.ProjectTo<ProductDTO>(products.AsQueryable());
+        }
     }
 }

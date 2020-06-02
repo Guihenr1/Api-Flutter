@@ -7,5 +7,6 @@ namespace Api.Domain.Interfaces
     public interface IProductRepository
     {
          Task<IEnumerable<Product>> GetAll();
+         Task<IEnumerable<Product>> GetByCategory(int categoryID);
     }
 }

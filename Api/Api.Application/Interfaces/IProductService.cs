@@ -7,5 +7,6 @@ namespace Api.Application.Interfaces
     public interface IProductService
     {
         Task<IEnumerable<ProductDTO>> GetAll();
+        Task<IEnumerable<ProductDTO>> GetAllByType(int productCategory);
     }
 }

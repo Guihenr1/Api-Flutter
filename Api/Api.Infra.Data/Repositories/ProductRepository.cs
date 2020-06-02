@@ -13,5 +13,11 @@ namespace Api.Infra.Data.Repositories
             return await Query<Product>(
                 $@"SELECT * FROM ""product""");
         }
+
+        public async Task<IEnumerable<Product>> GetByCategory(int categoryID)
+        {
+            return await Query<Product>(
+                $@"SELECT * FROM ""product"" where ""Category"" = " + categoryID);
+        }
     }
 }

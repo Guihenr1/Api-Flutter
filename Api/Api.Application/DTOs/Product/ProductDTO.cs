@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Application.DTOs.Product
 {
     public class ProductDTO
@@ -6,5 +8,6 @@ namespace Api.Application.DTOs.Product
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+        public Category Category { get; set; }
     }
 }

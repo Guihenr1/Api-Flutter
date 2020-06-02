@@ -1,6 +1,7 @@
 using Api.Application.DTOs.Product;
 using Api.Application.DTOs.User;
 using Api.Domain.Entities;
+using Api.Domain.Enums;
 using AutoMapper;
 
 namespace Api.Application.AutoMapper
