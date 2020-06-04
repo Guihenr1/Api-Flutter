@@ -1,4 +1,4 @@
-import 'package:app/pages/usuario.dart';
+import 'package:app/pages/login/usuario.dart';
 import 'package:app/utils/alert.dart';
 import 'package:app/utils/nav.dart';
 import 'package:app/widgets/app_button.dart';
@@ -6,8 +6,8 @@ import 'package:app/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'api_response.dart';
-import 'home_page.dart';
+import '../api_response.dart';
+import '../produto/home_page.dart';
 import 'login_api.dart';
 
 class LoginPage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Carros"),
+        title: Text("Loja"),
       ),
       body: _body(),
     );
@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
 
       print(">>> $user");
 
-      push(context, HomePage());
+      push(context, HomePage(), replace: true);
 
       state(false);
     } else {

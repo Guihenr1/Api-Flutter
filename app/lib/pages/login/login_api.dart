@@ -1,14 +1,12 @@
 import 'dart:convert';
-
-import 'package:app/pages/usuario.dart';
+import 'package:app/pages/login/usuario.dart';
 import 'package:http/http.dart' as http;
-
-import 'api_response.dart';
+import '../api_response.dart';
 
 class LoginApi {
   static Future<ApiResponse> login(String login, String senha) async {
     try{
-      var url = 'http://b5ae4415.ngrok.io/api/user';
+      var url = 'http://4824c3e032cb.ngrok.io/api/user';
 
       Map<String, String> headers = {
         "Content-Type": "application/json"
@@ -37,7 +35,7 @@ class LoginApi {
       return ApiResponse.error("Erro ao tentar realizar login");
     }
     catch(error, exception){
-      print("Erro no login $error > $exception");
+      print("Erro no pages.login $error > $exception");
 
       return ApiResponse.error("Não foi possível realizar o login");
     }

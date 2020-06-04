@@ -32,8 +32,8 @@ namespace Api.Application.Services
             if (getUser == null)
                 throw new Exception("Usuário ou senha incorretos.");
             
-            userAuthenticate.Token = await _tokenService.GenerateToken(user);
-            userAuthenticate.User = _mapper.Map<UserDTO>(user);
+            userAuthenticate.Token = await _tokenService.GenerateToken(getUser);
+            userAuthenticate.User = _mapper.Map<UserDTO>(getUser);
 
             return userAuthenticate;
         }

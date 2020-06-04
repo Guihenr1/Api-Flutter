@@ -43,13 +43,13 @@ namespace Api.Web.Controllers
         /// </summary>
         /// <param name="productCategory">ID da categoria do produto.</param>
         /// <returns>Retorna todos os produtos por categoria.</returns>
-        [HttpGet("productCategory")]
+        [HttpGet("{productCategory}")]
         public async Task<IActionResult> Get(int productCategory)
         {
             IEnumerable allProductsByType = new List<ProductDTO>();
             try
             {
-                allProductsByType = await _productService.GetAllByType(productCategory);
+                allProductsByType = await _productService.GetAllByCategory(productCategory);
             }
             catch (Exception ex)
             {
