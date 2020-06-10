@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Application.DTOs.Product;
 using Api.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Web.Controllers
@@ -23,6 +24,7 @@ namespace Api.Web.Controllers
         /// </summary>
         /// <returns>Retorna todos os produtos.</returns>
         [HttpGet("")]
+        [Authorize]
         public async Task<IActionResult> Get()
         {
             IEnumerable allProducts = new List<ProductDTO>();
@@ -44,6 +46,7 @@ namespace Api.Web.Controllers
         /// <param name="productCategory">ID da categoria do produto.</param>
         /// <returns>Retorna todos os produtos por categoria.</returns>
         [HttpGet("{productCategory}")]
+        [Authorize]
         public async Task<IActionResult> Get(int productCategory)
         {
             IEnumerable allProductsByType = new List<ProductDTO>();
